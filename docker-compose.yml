@@ -11,3 +11,13 @@ services:
       - 3000:3000
   redis:
     image: redis
+  metric-provider-a:
+    image: metric-provider
+    container_name: metric-provider-a
+    environment:
+      - BIND_IP=0.0.0.0
+      - BIND_PORT=2112
+    ports:
+      - target: 2112
+        published: 2112
+        protocol: tcp
